@@ -75,6 +75,12 @@ if (
         </div>
         <input type="hidden" name="output_statement" id="output_statement">
 
+        <label for="editor-container-note" class="block text-gray-700 font-bold mb-2 flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6">Note</label>
+
+        <div class="mb-5" id="editor-container-note">
+        </div>
+        <input type="hidden" name="note" id="note">
+
 
 
         <div class="mb-4 mt-5">
@@ -138,12 +144,16 @@ if (
         </div>
         <div class="flex flex-wrap -mx-2">
           <div class="form-group w-1/2 mb-4">
-            <label class="block text-gray-700 font-bold mb-2" for="sampleinput">Sample Input File</label>
-            <input class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="file" name="sampleinput" id="sampleinput">
+            <label class="block text-gray-700 font-bold mb-2 mr-1" for="sampleinput">Sample Input File</label>
+            <div class="mt-2 mr-1">
+            <textarea type="text" name="sampleinput" id="sampleinput" required rows="5" class="block w-full border-gray-300 p-2 rounded-md placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full h-100px text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"></textarea>
+          </div>
           </div>
           <div class="form-group w-1/2 mb-4">
-            <label class="block text-gray-700 font-bold mb-2" for="sampleoutput">Sample Output File</label>
-            <input class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="file" name="sampleoutput" id="sampleoutput">
+            <label class="block text-gray-700 font-bold mb-2 ml-1" for="sampleoutput">Sample Output File</label>
+            <div class="mt-2 ml-1">
+            <textarea type="text" name="sampleoutput" id="sampleoutput" required rows="5" class="block w-full border-gray-300 p-2 rounded-md placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full h-100px text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"></textarea></div>
+            
           </div>
         </div>
         <div class="form-group mb-4">
@@ -278,6 +288,33 @@ if (
           ]
         },
         placeholder: 'Output...',
+        theme: 'snow' // or 'bubble'
+      });
+
+      var quill_note = new Quill('#editor-container-note', {
+        modules: {
+          toolbar: [
+            [{
+              header: [1, 2, false]
+            }],
+            [
+              'bold',
+              'italic',
+              'underline',
+              'strike',
+              'blockquote',
+              'formula',
+            ],
+            [{
+              list: 'ordered'
+            }, {
+              list: 'bullet'
+            }],
+            ['link', 'video', 'code-block'],
+            ['image'],
+          ]
+        },
+        placeholder: 'Note...',
         theme: 'snow' // or 'bubble'
       });
 
